@@ -22,6 +22,20 @@ Types of Vaccines:
 <li>DSubunit/conjugate</li>
 </ul>
 
+### Technologies used in this application:
+<ul>
+<li>JavaScript</li>
+<li>Node.js</li>
+<li>Express.js</li>
+<li>DMongoose</li>
+<li>HTML5 with CSS</li>
+</ul>
+
+## Links related with this project:
+
+<a href="https://github.com/Silvia42/ImmunizationRegister/projects/1">Project Board</a>
+
+
 
 
 
