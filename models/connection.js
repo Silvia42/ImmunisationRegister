@@ -10,9 +10,9 @@ const mongoose = require('mongoose');
  *
  */
 const connectionString = process.env.MONGODB_URI || "mongodb://localhost/imre";
-// name of local database is IssueTracker
+// name of local database is imre
 // this: process.env.MONGODB_URI is database in cloud
-// this "mongodb://localhost/IssueTracker" is database on local machine.
+// this "mongodb://localhost/imre" is database on local machine.
 //     ||     or means if cloud database is not available, then local db is used
 
 

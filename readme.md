@@ -12,7 +12,7 @@ MongoDB CRUD Operations:
 </ul>
 
 #### MongoDB Schema:
-<img src="Schema_ImmunizationRegister.png" alt="Schema Immunization Register">
+<img src="./public/Images/Schema_ImmunizationRegister.png" alt="Schema Immunization Register">
 
 Types of Vaccines:
 <ul>
@@ -21,6 +21,9 @@ Types of Vaccines:
 <li>Toxoid (inactivated toxin)</li>
 <li>DSubunit/conjugate</li>
 </ul>
+
+#### User Cases:
+<img src="./public/Images/imreUserCases.png" alt="User Cases">
 
 ### Technologies used in this application:
 <ul>
