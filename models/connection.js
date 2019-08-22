@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
  * This will need to change for every new project you create.
  *
  */
-const connectionString = process.env.MONGODB_URI || "mongodb://localhost/IssueTracker";
+const connectionString = process.env.MONGODB_URI || "mongodb://localhost/imre";
 // name of local database is IssueTracker
 // this: process.env.MONGODB_URI is database in cloud
 // this "mongodb://localhost/IssueTracker" is database on local machine.
