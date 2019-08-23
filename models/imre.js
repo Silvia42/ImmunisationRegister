@@ -10,6 +10,7 @@
  *
  */
 const mongoose = require('./connection.js')
+const ObjectId = mongoose.ObjectId
 
 /* Step 1 alternative
  * TODO: make a global variable to act as an in memory database. 
@@ -27,7 +28,8 @@ const mongoose = require('./connection.js')
 const PersonSchema = new mongoose.Schema({
   // _id is AUTO ASSIGN when a new document is added
   name: String,
-  dob: Date
+  dob: Date,
+  admin: Boolean // true = YES Admin, false = NO Admin
 })
 
 const DiseaseSchema = new mongoose.Schema({
@@ -81,6 +83,7 @@ const createPersonRecord= () => {
   return PersonCollection.create({
     name: "",
     dob: new Date(),
+    admin: false
   })
 }
 //////////////////////////////////////////////////////////////////////
@@ -135,6 +138,10 @@ module.exports = {
   /////////////////////////  VaccineTypeRecord  /////////////////////
   createVaccineTypeRecord
 
+}
+
+const getVaccinationRecordsForPersonById = (personId) => {
+  
 }
 
 
