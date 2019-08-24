@@ -10,6 +10,7 @@
  *
  */
 const mongoose = require('./connection.js')
+// ObjectId is not JavaScript type, it exists only in mongoose
 const ObjectId = mongoose.ObjectId
 
 /* Step 1 alternative
@@ -44,11 +45,9 @@ const VaccineTypeSchema = new mongoose.Schema({
   description: String
 })
 
-
 const VaccinationRecordSchema = new mongoose.Schema({
   // _id is AUTO ASSIGN when a new document is added
   personId: ObjectId, 
-  //personId: [PersonSchema], 
   diseaseId: ObjectId, 
   vaccineType: ObjectId,
   date: Date,
@@ -86,6 +85,12 @@ const createPersonRecord= () => {
     admin: false
   })
 }
+
+const getVaccinationRecordsForPersonById = (personId) => {
+   return VaccinationRecordCollection.find({personId})
+}
+
+
 //////////////////////////////////////////////////////////////////////
 ///////////////////////// DiseaseCollection  /////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -106,28 +111,27 @@ const createVaccineTypeRecord = () => {
     description: ""
   })
 }
+const getVaccineTypeRecords = () => VaccineTypeCollection.find()
+const getVaccineTypeRecord = (id) => VaccineTypeCollection.findById(id)
+const addVaccineTypeRecord = (newType) => VaccineTypeCollection.insertMany([newType])
+const updateVaccineTypeRecord = (id,type) => VaccineTypeCollection.findByIdAndUpdate(id,type)
+const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.findByIdAndDelete(id)
 
 /////////
 
-/* Step 4
- *
- * TODO: delete this it's just a sample
- *
- */
-function getHelloWorldString() {
-  return 'hello world'
-}
+//// Step 4  * TODO: delete this it's just a sample
+function getHelloWorldString() {return 'hello world'}
 
 /* Step 5
- *
- * TODO: export all functions from this file by adding their names as keys to this
- * object
+ * TODO: export all functions from this file by adding their names as keys to this object
  */
 module.exports = {
   getHelloWorldString,
 
   /////////////////////////  VaccinationRecord  /////////////////////
   createVaccinationRecord,
+
+  getVaccinationRecordsForPersonById,
 
   /////////////////////////  PersonRecord  //////////////////////////
   createPersonRecord,
@@ -136,14 +140,14 @@ module.exports = {
   createDiseaseRecord,
 
   /////////////////////////  VaccineTypeRecord  /////////////////////
-  createVaccineTypeRecord
+  createVaccineTypeRecord,
+  getVaccineTypeRecords,
+  getVaccineTypeRecord,
+  addVaccineTypeRecord,
+  updateVaccineTypeRecord,
+  deleteVaccineTypeRecord
 
 }
-
-const getVaccinationRecordsForPersonById = (personId) => {
-  
-}
-
 
 ///https://scotch.io/@ossaijad/how-to-do-join-operations-and-create-links-between-mongodb-collection
 //////////////////////////////////////////////////////////////////

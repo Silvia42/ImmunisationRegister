@@ -23,7 +23,7 @@ Types of Vaccines:
 </ul>
 
 #### User Cases:
-<img src="./public/Images/imreUserCasesVer02.png" alt="User Cases">
+<img src="./public/Images/imreUserCasesVer03.png" alt="User Cases">
 
 ### Technologies used in this application:
 <ul>
