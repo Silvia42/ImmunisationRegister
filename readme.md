@@ -12,7 +12,7 @@ MongoDB CRUD Operations:
 </ul>
 
 #### MongoDB Schema:
-<img src="./public/Images/Schema_ImmunizationRegisterCrowFoot.png" alt="Schema Immunization Register">
+<img src="./public/Images/Schema_ImmunizationRegisterCrowFootVer02.png" alt="Schema Immunization Register">
 
 Types of Vaccines:
 <ul>
@@ -23,7 +23,7 @@ Types of Vaccines:
 </ul>
 
 #### User Cases:
-<img src="./public/Images/imreUserCasesVer03.png" alt="User Cases">
+<img src="./public/Images/imreUserCasesVer04.png" alt="User Cases">
 
 ### Technologies used in this application:
 <ul>
