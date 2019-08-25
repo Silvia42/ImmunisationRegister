@@ -13,6 +13,9 @@ const mongoose = require('./connection.js')
 // ObjectId is not JavaScript type, it exists only in mongoose
 const ObjectId = mongoose.ObjectId
 
+// because deprecation warning: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
+// mongoose.set('useFindAndModify', true)
+
 /* Step 1 alternative
  * TODO: make a global variable to act as an in memory database. 
  * NOTE: doing this WILL NOT persist your data and you will loose
@@ -58,6 +61,64 @@ const VaccinationRecordSchema = new mongoose.Schema({
  * TODO: create collection API
  * NOTE: skip this if you are not using mongoose
  */
+
+//////////////////////////////////////////////////////////////////////
+///////////////////////// PersonCollection  /////////////////////////
+//////////////////////////////////////////////////////////////////////
+const PersonCollection = mongoose.model('PersonRecord', PersonSchema)
+const createPersonRecord = () => {
+  return PersonCollection.create({
+    name: "",
+    dob: new Date(),
+    admin: false
+  })
+}
+const getPersonRecords = () => PersonCollection.find()
+const getPersonRecord = (id) => PersonCollection.findById(id)
+const addPersonRecord = (newPerson) => PersonCollection.insertMany([newPerson])
+const updatePersonRecord = (id,person) => PersonCollection.updateOne({_id:id},{name:person})
+const deletePersonRecord = (id) => PersonCollection.deleteOne({_id:id})
+
+//////////////////////////////////////////////////////////////////////
+///////////////////////// DiseaseCollection  /////////////////////////
+//////////////////////////////////////////////////////////////////////
+const DiseaseCollection = mongoose.model('DiseaseRecord', DiseaseSchema)
+const createDiseaseRecord = () => {
+  return DiseaseCollection.create({
+    name: "",
+    description: ""
+  })
+}
+const getDiseaseRecords = () => DiseaseCollection.find()
+const getDiseaseRecord = (id) => DiseaseCollection.findById(id)
+const addDiseaseRecord = (newDisease) => DiseaseCollection.insertMany([newDisease])
+const updateDiseaseRecord = (id,disease) => DiseaseCollection.updateOne({_id:id},{name:disease})
+const deleteDiseaseRecord = (id) => DiseaseCollection.deleteOne({_id:id})
+
+//////////////////////////////////////////////////////////////////////
+///////////////////////// VaccineTypeCollection  /////////////////////////
+//////////////////////////////////////////////////////////////////////
+const VaccineTypeCollection = mongoose.model('VaccineTypeRecord', VaccineTypeSchema)
+const createVaccineTypeRecord = () => {
+  return VaccineTypeCollection.create({
+    name: "",
+    description: ""
+  })
+}
+const getVaccineTypeRecords = () => VaccineTypeCollection.find()
+const getVaccineTypeRecord = (id) => VaccineTypeCollection.findById(id)
+const addVaccineTypeRecord = (newType) => VaccineTypeCollection.insertMany([newType])
+const updateVaccineTypeRecord = (id,type) => 
+      VaccineTypeCollection.updateOne({_id:id},{name:type})
+      // VaccineTypeCollection.findByIdAndUpdate({_id:id},{name:type})
+      // VaccineTypeCollection.findByIdAndUpdate({_id:id},{name:type},{new: true})
+const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.deleteOne({_id:id})
+// const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.findByIdAndDelete(id)
+// const dropVaccineTypeCollection = () => mongoose.db.dropCollection(VaccineTypeCollection)
+const deleteAllVaccineTypeRecord = () => VaccineTypeCollection.deleteMany()
+
+
+
 //////////////////////////////////////////////////////////////////////
 //////////////////// VaccinationRecordCollection  ////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -74,48 +135,9 @@ const createVaccinationRecord = (personId,diseaseId,vaccineType) => {
   })
 }
 
-//////////////////////////////////////////////////////////////////////
-///////////////////////// PersonCollection  /////////////////////////
-//////////////////////////////////////////////////////////////////////
-const PersonCollection = mongoose.model('PersonRecord', PersonSchema)
-const createPersonRecord= () => {
-  return PersonCollection.create({
-    name: "",
-    dob: new Date(),
-    admin: false
-  })
-}
-
 const getVaccinationRecordsForPersonById = (personId) => {
-   return VaccinationRecordCollection.find({personId})
+  return VaccinationRecordCollection.find({personId})
 }
-
-
-//////////////////////////////////////////////////////////////////////
-///////////////////////// DiseaseCollection  /////////////////////////
-//////////////////////////////////////////////////////////////////////
-const DiseaseCollection = mongoose.model('DiseaseRecord', DiseaseSchema)
-const createDiseaseRecord = () => {
-  return DiseaseCollection.create({
-    name: "",
-    description: ""
-  })
-}
-//////////////////////////////////////////////////////////////////////
-///////////////////////// VaccineTypeCollection  /////////////////////////
-//////////////////////////////////////////////////////////////////////
-const VaccineTypeCollection = mongoose.model('VaccineTypeRecord', VaccineTypeSchema)
-const createVaccineTypeRecord = () => {
-  return VaccineTypeCollection.create({
-    name: "",
-    description: ""
-  })
-}
-const getVaccineTypeRecords = () => VaccineTypeCollection.find()
-const getVaccineTypeRecord = (id) => VaccineTypeCollection.findById(id)
-const addVaccineTypeRecord = (newType) => VaccineTypeCollection.insertMany([newType])
-const updateVaccineTypeRecord = (id,type) => VaccineTypeCollection.findByIdAndUpdate(id,type)
-const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.findByIdAndDelete(id)
 
 /////////
 
@@ -128,16 +150,21 @@ function getHelloWorldString() {return 'hello world'}
 module.exports = {
   getHelloWorldString,
 
-  /////////////////////////  VaccinationRecord  /////////////////////
-  createVaccinationRecord,
-
-  getVaccinationRecordsForPersonById,
-
   /////////////////////////  PersonRecord  //////////////////////////
   createPersonRecord,
+  getPersonRecords,
+  getPersonRecord,
+  addPersonRecord,
+  updatePersonRecord,
+  deletePersonRecord,
 
   /////////////////////////  DiseaseRecord   ////////////////////////
   createDiseaseRecord,
+  getDiseaseRecords,
+  getDiseaseRecord,
+  addDiseaseRecord, 
+  updateDiseaseRecord,
+  deleteDiseaseRecord,
 
   /////////////////////////  VaccineTypeRecord  /////////////////////
   createVaccineTypeRecord,
@@ -145,8 +172,14 @@ module.exports = {
   getVaccineTypeRecord,
   addVaccineTypeRecord,
   updateVaccineTypeRecord,
-  deleteVaccineTypeRecord
+  deleteVaccineTypeRecord,
+  deleteAllVaccineTypeRecord,
+  //dropVaccineTypeCollection,
 
+  /////////////////////////  VaccinationRecord  /////////////////////
+  createVaccinationRecord,
+
+  getVaccinationRecordsForPersonById,
 }
 
 ///https://scotch.io/@ossaijad/how-to-do-join-operations-and-create-links-between-mongodb-collection
@@ -187,3 +220,17 @@ r.ingredients.push('mongo id of ingredient');
 
 r.save();
 */
+
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+      // To fix all deprecation warnings, follow the below steps:
+
+      // mongoose.set('useNewUrlParser', true);
+      // mongoose.set('useFindAndModify', false);
+      // mongoose.set('useCreateIndex', true);
+      // Replace update() with updateOne(), updateMany(), or replaceOne()
+      // Replace remove() with deleteOne() or deleteMany().
+      // Replace count() with countDocuments(), unless you want to count how many documents 
+      // are in the whole collection (no filter). 
+      // In the latter case, use estimatedDocumentCount().
