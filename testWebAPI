@@ -47,7 +47,7 @@ HERE
   exit 0
 }
 
-port="3000"
+port="4242"
 
 while getopts 'hp:' opt; do
   case $opt in

@@ -96,7 +96,7 @@ const updateDiseaseRecord = (id,disease) => DiseaseCollection.updateOne({_id:id}
 const deleteDiseaseRecord = (id) => DiseaseCollection.deleteOne({_id:id})
 
 //////////////////////////////////////////////////////////////////////
-///////////////////////// VaccineTypeCollection  /////////////////////////
+///////////////////////// VaccineTypeCollection  /////////////////////
 //////////////////////////////////////////////////////////////////////
 const VaccineTypeCollection = mongoose.model('VaccineTypeRecord', VaccineTypeSchema)
 const createVaccineTypeRecord = () => {
