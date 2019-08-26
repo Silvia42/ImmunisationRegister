@@ -114,7 +114,7 @@ const updateVaccineTypeRecord = (id,type) =>
       // VaccineTypeCollection.findByIdAndUpdate({_id:id},{name:type},{new: true})
 const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.deleteOne({_id:id})
 // const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.findByIdAndDelete(id)
-const dropVaccineTypeCollection = () => mongoose.db.drop
+const dropVaccineTypeCollection = () => mongoose.db.drop('VaccineTypeRecord')
 const deleteAllVaccineTypeRecord = () => VaccineTypeCollection.deleteMany()
 
 
@@ -174,7 +174,7 @@ module.exports = {
   updateVaccineTypeRecord,
   deleteVaccineTypeRecord,
   deleteAllVaccineTypeRecord,
-  //dropVaccineTypeCollection,
+  dropVaccineTypeCollection,
 
   /////////////////////////  VaccinationRecord  /////////////////////
   createVaccinationRecord,

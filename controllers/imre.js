@@ -66,6 +66,19 @@ imreRouter.get('/VaccineType', function(req,res) {
   })
 })
 
+imreRouter.get('/addVaccineType', (req, res) => {
+  res.render('addVaccineType', {})
+})
+
+imreRouter.post('/VaccineType', (req, res) => {
+  imreApi.addVaccineTypeRecord(req.body).then(() => {
+    //console.log("I am here!")
+    res.redirect("/imre/VaccineType")
+    // res.send('VaccineType Added')
+    // res.send(200);
+  })
+})
+
 //////////////////////////////////////////////////////////////////////
 //////////////////// VaccinationRecordCollection  ////////////////////
 //////////////////////////////////////////////////////////////////////
