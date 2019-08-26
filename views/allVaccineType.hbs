@@ -1,0 +1,13 @@
+<h1>Vaccine Types</h1>
+<a href="imre/VaccineType ">Add Vaccine Type</a>
+
+<ul>
+    {{#each vTypeInDB}}
+        <li>
+            <a href="/imre/VaccineType/{{_id}}">{{name}}</a>
+        </li>
+    {{/each}}
+</ul>
+<form method="POST" action="/imre/VaccineType/?_method=DELETE">
+    <input type="submit" value="Delete No Name Vaccine Type"/>
+</form>
