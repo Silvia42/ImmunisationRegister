@@ -64,9 +64,9 @@ imreRouter.get('/VaccineType', function(req,res) {
 
 //////////////////////////             Step 5         //////////////////////////
 // * TODO: delete this handler; it's just a sample
-// imreRouter.get('/', (req, res) => {
-//   res.send(imreApi.getHelloWorldString())
-// })
+imreRouter.get('/', (req, res) => {
+  res.send(imreApi.getHelloWorldString())
+})
 
 //////////////////////////             Step 6         //////////////////////////
 // * Export the router from the file.
