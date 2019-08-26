@@ -40,8 +40,15 @@ Types of Vaccines:
 <br>
 <a href="https://pacific-dawn-76771.herokuapp.com/imre/">Immunization register on Heroku</a>
 
+https://giphy.com/stickers/syringe-17tKkkKF8rzCU
 
+## Project Resources:
+<ul>
+<li><a href="https://www.cdc.gov/vaccines/index.html">CDC - Vaccines & Immunizations</a></li>
+<li><a href="https://www.humanservices.gov.au/individuals/services/medicare/australian-immunisation-register">Australian Immunisation Register</a></li>
+<li><a href="https://giphy.com/stickers/syringe-17tKkkKF8rzCU">Syringe animated gif</a></li>
 
+</ul>
 
 
 
