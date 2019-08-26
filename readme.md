@@ -34,13 +34,14 @@ Types of Vaccines:
 <li>HTML5 with CSS</li>
 </ul>
 
-## Links related with this project:
+## Links related to this project:
 
-<a href="https://github.com/Silvia42/ImmunizationRegister/projects/1">Project Board</a>
+<ul>
+<li><a href="https://github.com/Silvia42/ImmunizationRegister/projects/1">Project Board</a></li>
+
+<li><a href="https://pacific-dawn-76771.herokuapp.com/imre/">Immunization register on Heroku</a></li>
+</ul>
 <br>
-<a href="https://pacific-dawn-76771.herokuapp.com/imre/">Immunization register on Heroku</a>
-
-https://giphy.com/stickers/syringe-17tKkkKF8rzCU
 
 ## Project Resources:
 <ul>
