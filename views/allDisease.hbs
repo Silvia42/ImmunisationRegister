@@ -1,8 +1,8 @@
 <h1>Disease</h1>
-<a href="imre/Disease ">Add Disease</a>
-
+<a href="/imre/addDisease">Add Disease</a>
+<p>{{diseaseInDB}}</p>
 <ul>
-    {{#each vTypeInDB}}
+    {{#each diseaseInDB}}
         <li>
             <a href="/imre/Disease/{{_id}}">{{name}}</a>
         </li>
