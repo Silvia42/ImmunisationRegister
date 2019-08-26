@@ -17,6 +17,29 @@ const imreRouter = express.Router()
 //////////////////////////             Step 4         ////////////////////////// 
 // * TODO: Put all request handlers here
 
+/////////////////////////////////////////////////////////////////////
+///////////////////////// PersonCollection  /////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+imreRouter.get('/Person', function(req,res) {
+  //res.send(imreApi.getVaccineTypeRecords());
+  imreApi.getPersonRecords().then((personInDB) => {
+    // res.send(vTypeInDB);
+    res.render('allPerson', {personInDB});
+  })
+})
+
+//////////////////////////////////////////////////////////////////////
+///////////////////////// DiseaseCollection  /////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+imreRouter.get('/Disease', function(req,res) {
+  //res.send(imreApi.getVaccineTypeRecords());
+  imreApi.getDiseaseRecords().then((diseaseInDB) => {
+    // res.send(vTypeInDB);
+    res.render('allDisease', {diseaseInDB});
+  })
+})
 
 //////////////////////////////////////////////////////////////////////
 ///////////////////////// VaccineTypeCollection  /////////////////////
@@ -24,17 +47,19 @@ const imreRouter = express.Router()
 
 imreRouter.get('/VaccineType', function(req,res) {
   //res.send(imreApi.getVaccineTypeRecords());
-  console.log('I am here')
   imreApi.getVaccineTypeRecords().then((vTypeInDB) => {
-    res.send(vTypeInDB);
+    // res.send(vTypeInDB);
+    res.render('allVaccineType', {vTypeInDB});
   })
 })
 
-// billsRouter.get('/', (req, res) => {
-//   billsApi.getBills().then((billsInDB) => {
-//   res.render('allBills', {billsInDB});
-//   })
-// })
+//////////////////////////////////////////////////////////////////////
+//////////////////// VaccinationRecordCollection  ////////////////////
+//////////////////////////////////////////////////////////////////////
+
+
+
+
 
 
 //////////////////////////             Step 5         //////////////////////////

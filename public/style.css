@@ -1,5 +1,55 @@
-body{
+h1{
+    color: bisque;
+    text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.6); 
+}
+
+a{
+    color:white;
+}
+
+body, html{
     background-repeat: no-repeat;
-    background: linear-gradient(to bottom,
-     rgb(252,234,187) 0%,rgb(252,205,77) 50%,rgb(248,181,0) 51%,rgb(251,223,147) 100%); 
+    /* background: linear-gradient(to bottom, */
+    /* rgb(252,234,187) 0%,rgb(252,205,77) 50%,rgb(248,181,0) 51%,rgb(251,223,147) 100%);  */
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-size: 100% 100%;
+    background-image: url("../Images/underSea.jpg");
+    background-color: blue;
+    text-align: center;
+    }
+/* ///////////////////////////////////////// KeyFrames-Swiming Fish */
+#swimingFish{
+    z-index: 9999;
+    position: absolute;
+    width: 100vw;
+    height: 100%vh;
+    top:50%;
+    left:-40%;
+}
+.smallImg{
+    position: relative;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; */
+    animation: keepSwimming 20s infinite;
+}
+#swimingFish img{
+    width: 10vmin;
+    height: auto;
+}
+@keyframes keepSwimming{
+    0%{
+        transform: rotate(30deg);
+        transform: translate(100px,200px);  
+    }
+    50%{
+        transform: rotate(330deg);
+    }
+    100%{
+        transform: translate(100px,200px);  
+    }
 }
