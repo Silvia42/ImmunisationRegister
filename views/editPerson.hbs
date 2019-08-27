@@ -3,10 +3,12 @@
     <input type="text" name="name" value="{{personRecord.name}}"/>
 
     <label for="dob">Date Of Birth</label>
-    <input type="date" name="dob" value={{personRecord.dob}}/>
+    <input type="date" name="dob" value="{{personRecord.dobStr}}"/>
 
     <label>Administrator</label>
-    <input type="checkbox" name="admin" value={{personRecord.admin}}/>
+    <input type="checkbox" name="admin" value="true"
+        {{#if personRecord.admin}} checked {{/if}}
+    />
     {{!-- UnhandledPromiseRejectionWarning: CastError: Cast to Boolean failed for value "" at path "admin" --}}
 
     <input type="submit" value="Update Person"/>

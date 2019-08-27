@@ -43,6 +43,11 @@ imreRouter.post('/Person', (req, res) => {
 
 imreRouter.get('/Person/:personId', (req, res) => {
   imreApi.getPersonRecord(req.params.personId).then(personRecord => {
+      personRecord.dobStr = 
+        personRecord.dob
+          ? personRecord.dob.toISOString().substring(0, 10)
+          : ""
+      //console.log(personRecord)
       res.render('editPerson', {personRecord, personId: req.params.personId})
   })
 })
