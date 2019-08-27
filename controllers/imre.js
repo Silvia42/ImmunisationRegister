@@ -82,7 +82,7 @@ imreRouter.put('/Disease/:diseaseId', (req,res) => {
 })
 
 imreRouter.delete('/Disease/:diseaseId', (req, res) => {
-  imreApi.deleteDiseaseRecord(req.params.billId).then(() => {
+  imreApi.deleteDiseaseRecord(req.params.diseaseId).then(() => {
       //res.send('DiseaseRecord Deleted')
       res.redirect("/imre/Disease")
   })
