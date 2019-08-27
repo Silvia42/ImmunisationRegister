@@ -76,7 +76,7 @@ const createPersonRecord = () => {
 const getPersonRecords = () => PersonCollection.find()
 const getPersonRecord = (id) => PersonCollection.findById(id)
 const addPersonRecord = (newPerson) => PersonCollection.insertMany([newPerson])
-const updatePersonRecord = (id,person) => PersonCollection.updateOne({_id:id},{name:person})
+const updatePersonRecord = (id,person) => PersonCollection.updateOne({_id:id},person)
 const deletePersonRecord = (id) => PersonCollection.deleteOne({_id:id})
 
 //////////////////////////////////////////////////////////////////////
@@ -110,14 +110,14 @@ const getVaccineTypeRecords = () => VaccineTypeCollection.find()
 const getVaccineTypeRecord = (id) => VaccineTypeCollection.findById(id)
 const addVaccineTypeRecord = (newType) => VaccineTypeCollection.insertMany([newType])
 const updateVaccineTypeRecord = (id,type) => 
-      VaccineTypeCollection.updateOne({_id:id},{name:type})
+      VaccineTypeCollection.updateOne({_id:id},type)
       // VaccineTypeCollection.findByIdAndUpdate({_id:id},{name:type})
       // VaccineTypeCollection.findByIdAndUpdate({_id:id},{name:type},{new: true})
 const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.deleteOne({_id:id})
 // const deleteVaccineTypeRecord = (id) => VaccineTypeCollection.findByIdAndDelete(id)
 const dropVaccineTypeCollection = () => mongoose.db.drop('VaccineTypeRecord')
 const deleteAllVaccineTypeRecord = () => VaccineTypeCollection.deleteMany()
-
+const deleteEmptyVaccineTypeRecords = () => VaccineTypeCollection.deleteMany({name:''})
 
 
 //////////////////////////////////////////////////////////////////////
@@ -177,6 +177,7 @@ module.exports = {
   deleteVaccineTypeRecord,
   deleteAllVaccineTypeRecord,
   dropVaccineTypeCollection,
+  deleteEmptyVaccineTypeRecords,
 
   /////////////////////////  VaccinationRecord  /////////////////////
   createVaccinationRecord,

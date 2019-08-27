@@ -119,6 +119,31 @@ imreRouter.post('/VaccineType', (req, res) => {
   })
 })
 
+imreRouter.get('/VaccineType/:vaccineTypeId', (req, res) => {
+  imreApi.getVaccineTypeRecord(req.params.vaccineTypeId).then(vaccineTypeRecord => {
+      res.render('editVaccineType', {vaccineTypeRecord, vaccineTypeId: req.params.vaccineTypeId})
+  })
+})
+
+imreRouter.put('/VaccineType/:vaccineTypeId', (req,res) => {
+  imreApi.updateVaccineTypeRecord(req.params.vaccineTypeId, req.body).then(() => {
+      res.redirect("/imre/VaccineType")
+  })
+})
+
+imreRouter.delete('/VaccineType/:vaccineTypeId', (req, res) => {
+  imreApi.deleteVaccineTypeRecord(req.params.vaccineTypeId).then(() => {
+      //res.send('VaccineTypeRecord Deleted')
+      res.redirect("/imre/VaccineType")
+  })
+})
+imreRouter.delete('/VaccineType', (req, res) => {
+  imreApi.deleteEmptyVaccineTypeRecords().then(() => {
+      //res.send('Empty VaccineTypeRecords Deleted')
+      res.redirect("/imre/VaccineType")
+  })
+})
+
 //////////////////////////////////////////////////////////////////////
 //////////////////// VaccinationRecordCollection  ////////////////////
 //////////////////////////////////////////////////////////////////////

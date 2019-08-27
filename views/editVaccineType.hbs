@@ -1,0 +1,13 @@
+<form method="POST" action="/imre/VaccineType/{{vaccineTypeId}}?_method=PUT">
+    <label for="name">Name</label>
+    <input type="text" name="name" value="{{vaccineTypeRecord.name}}"/>
+
+    <label for="description">Description</label>
+    <input type="text" name="description" value="{{vaccineTypeRecord.description}}"/>
+
+    <input type="submit" value="Update Vaccine Type"/>
+</form>
+
+<form method="POST" action="/imre/VaccineType/{{vaccineTypeId}}?_method=DELETE">
+    <input type="submit" value="Delete Vaccine Type"/>
+</form>
