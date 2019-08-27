@@ -6,6 +6,9 @@ h1{
 a{
     color:white;
 }
+ul{
+    list-style-type: none;
+}
 
 body, html{
     background-repeat: no-repeat;
@@ -22,6 +25,8 @@ body, html{
     background-image: url("../Images/underSea.jpg");
     background-color: blue;
     text-align: center;
+
+    text-shadow: .1em .1em .2em rgba(0, 0, 0, 0.6); 
     }
 /* ///////////////////////////////////////// KeyFrames-Swiming Fish */
 #swimingFish{

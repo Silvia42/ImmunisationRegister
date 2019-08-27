@@ -92,8 +92,9 @@ const createDiseaseRecord = () => {
 const getDiseaseRecords = () => DiseaseCollection.find()
 const getDiseaseRecord = (id) => DiseaseCollection.findById(id)
 const addDiseaseRecord = (newDisease) => DiseaseCollection.insertMany([newDisease])
-const updateDiseaseRecord = (id,disease) => DiseaseCollection.updateOne({_id:id},{name:disease})
+const updateDiseaseRecord = (id,disease) => DiseaseCollection.updateOne({_id:id},disease)
 const deleteDiseaseRecord = (id) => DiseaseCollection.deleteOne({_id:id})
+const deleteEmptyDiseaseRecords = () => DiseaseCollection.deleteMany({name:''})
 
 //////////////////////////////////////////////////////////////////////
 ///////////////////////// VaccineTypeCollection  /////////////////////
@@ -165,6 +166,7 @@ module.exports = {
   addDiseaseRecord, 
   updateDiseaseRecord,
   deleteDiseaseRecord,
+  deleteEmptyDiseaseRecords,
 
   /////////////////////////  VaccineTypeRecord  /////////////////////
   createVaccineTypeRecord,

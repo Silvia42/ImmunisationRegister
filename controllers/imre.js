@@ -29,6 +29,18 @@ imreRouter.get('/Person', function(req,res) {
   })
 })
 
+imreRouter.get('/addPerson', (req, res) => {
+  res.render('addPerson', {})
+})
+
+imreRouter.post('/Person', (req, res) => {
+  imreApi.addPersonRecord(req.body).then(() => {
+    res.redirect("/imre/Person")
+    // res.send('Person Added')
+    // res.send(200);
+  })
+})
+
 //////////////////////////////////////////////////////////////////////
 ///////////////////////// DiseaseCollection  /////////////////////////
 //////////////////////////////////////////////////////////////////////
@@ -47,10 +59,38 @@ imreRouter.get('/addDisease', (req, res) => {
 
 imreRouter.post('/Disease', (req, res) => {
   imreApi.addDiseaseRecord(req.body).then(() => {
-    //console.log("I am here!")
     res.redirect("/imre/Disease")
+    // res.render('allDisease', {diseaseInDB});
     // res.send('Disease Added')
     // res.send(200);
+  })
+})
+
+imreRouter.get('/Disease/:diseaseId', (req, res) => {
+  imreApi.getDiseaseRecord(req.params.diseaseId).then(diseaseRecord => {
+      res.render('editDisease', {diseaseRecord, diseaseId: req.params.diseaseId})
+  })
+})
+
+imreRouter.put('/Disease/:diseaseId', (req,res) => {
+  imreApi.updateDiseaseRecord(req.params.diseaseId, req.body).then(() => {
+      // res.send('Updated Disease')
+      //res.render('editDisease', {diseaseRecord, diseaseId: req.params.diseaseId})
+      //UnhandledPromiseRejectionWarning: Unhandled promise rejection.
+      res.redirect("/imre/Disease")
+  })
+})
+
+imreRouter.delete('/Disease/:diseaseId', (req, res) => {
+  imreApi.deleteDiseaseRecord(req.params.billId).then(() => {
+      //res.send('DiseaseRecord Deleted')
+      res.redirect("/imre/Disease")
+  })
+})
+imreRouter.delete('/Disease', (req, res) => {
+  imreApi.deleteEmptyDiseaseRecords().then(() => {
+      //res.send('Empty DiseaseRecords Deleted')
+      res.redirect("/imre/Disease")
   })
 })
 
