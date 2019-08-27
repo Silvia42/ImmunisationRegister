@@ -18,6 +18,7 @@ const methodOverride = require('method-override')
  *
  */
 const { imreRouter } = require('./controllers/imre.js')
+const { emptyRouter } = require('./controllers/empty.js')
 
 
 /* Step 3
@@ -62,6 +63,7 @@ app.set('view engine', 'hbs')
  * the paths defined in the router.
  */
 app.use('/imre', imreRouter)
+app.use('/', emptyRouter)
 
 /* Step 5
  *
