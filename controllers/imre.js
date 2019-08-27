@@ -41,6 +41,33 @@ imreRouter.post('/Person', (req, res) => {
   })
 })
 
+imreRouter.get('/Person/:personId', (req, res) => {
+  imreApi.getPersonRecord(req.params.personId).then(personRecord => {
+      res.render('editPerson', {personRecord, personId: req.params.personId})
+  })
+})
+
+imreRouter.put('/Person/:personId', (req,res) => {
+  // console.log("Person is here:", req.body)
+  //UnhandledPromiseRejectionWarning: CastError: Cast to Boolean failed for value "" at path "admin"
+  imreApi.updatePersonRecord(req.params.personId, req.body).then(() => {
+      res.redirect("/imre/Person")
+  })
+})
+
+imreRouter.delete('/Person/:personId', (req, res) => {
+  imreApi.deletePersonRecord(req.params.personId).then(() => {
+      //res.send('PersonRecord Deleted')
+      res.redirect("/imre/Person")
+  })
+})
+imreRouter.delete('/Person', (req, res) => {
+  imreApi.deleteEmptyPersonRecords().then(() => {
+      //res.send('Empty PersonRecords Deleted')
+      res.redirect("/imre/Person")
+  })
+})
+
 //////////////////////////////////////////////////////////////////////
 ///////////////////////// DiseaseCollection  /////////////////////////
 //////////////////////////////////////////////////////////////////////

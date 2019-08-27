@@ -79,6 +79,8 @@ const addPersonRecord = (newPerson) => PersonCollection.insertMany([newPerson])
 const updatePersonRecord = (id,person) => PersonCollection.updateOne({_id:id},person)
 const deletePersonRecord = (id) => PersonCollection.deleteOne({_id:id})
 
+//imreApi.updatePersonRecord(req.params.personId, req.body).then(() => {
+
 //////////////////////////////////////////////////////////////////////
 ///////////////////////// DiseaseCollection  /////////////////////////
 //////////////////////////////////////////////////////////////////////
