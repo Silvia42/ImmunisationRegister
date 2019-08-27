@@ -185,9 +185,19 @@ imreRouter.delete('/VaccineType', (req, res) => {
 //////////////////////////             Step 5         //////////////////////////
 // * TODO: delete this handler; it's just a sample
 imreRouter.get('/', (req, res) => {
-  res.send(imreApi.getHelloWorldString())
+  // res.send(imreApi.getHelloWorldString())
+  res.render('home')
+  // res.redirect("/imre/")  
+  // localhost redirected you too many times.
+  // Try clearing your cookies.
+  // ERR_TOO_MANY_REDIRECTS
 })
 
+    // imreRouter.get('/imre/', (req, res) => {
+    //   //res.send(imreApi.getHelloWorldString())
+    //   res.render('home')
+    // })
+    
 //////////////////////////             Step 6         //////////////////////////
 // * Export the router from the file.
 
