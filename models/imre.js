@@ -78,6 +78,7 @@ const getPersonRecord = (id) => PersonCollection.findById(id)
 const addPersonRecord = (newPerson) => PersonCollection.insertMany([newPerson])
 const updatePersonRecord = (id,person) => PersonCollection.updateOne({_id:id},person)
 const deletePersonRecord = (id) => PersonCollection.deleteOne({_id:id})
+const deleteEmptyPersonRecords = () => PersonCollection.deleteMany({name:''})
 
 //imreApi.updatePersonRecord(req.params.personId, req.body).then(() => {
 
@@ -160,6 +161,7 @@ module.exports = {
   addPersonRecord,
   updatePersonRecord,
   deletePersonRecord,
+  deleteEmptyPersonRecords,
 
   /////////////////////////  DiseaseRecord   ////////////////////////
   createDiseaseRecord,

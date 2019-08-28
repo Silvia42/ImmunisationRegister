@@ -1,16 +1,17 @@
+<h1>Person</h1>
 <form method="POST" action="/imre/Person/{{personId}}?_method=PUT">
     <label for="name">Name</label>
     <input type="text" name="name" value="{{personRecord.name}}"/>
-
+<br>
     <label for="dob">Date Of Birth</label>
     <input type="date" name="dob" value="{{personRecord.dobStr}}"/>
-
+<br>
     <label>Administrator</label>
     <input type="checkbox" name="admin" value="true"
         {{#if personRecord.admin}} checked {{/if}}
     />
     {{!-- UnhandledPromiseRejectionWarning: CastError: Cast to Boolean failed for value "" at path "admin" --}}
-
+<br>
     <input type="submit" value="Update Person"/>
 </form>
 

@@ -1,10 +1,11 @@
+<h1>Disease</h1>
 <form method="POST" action="/imre/Disease/{{diseaseId}}?_method=PUT">
     <label for="name">Name</label>
     <input type="text" name="name" value="{{diseaseRecord.name}}"/>
-
+<br>
     <label for="description">Description</label>
     <input type="text" name="description" value="{{diseaseRecord.description}}"/>
-
+<br>
     <input type="submit" value="Update Disease"/>
 </form>
 
